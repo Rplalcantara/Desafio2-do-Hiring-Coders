@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import * as S from "./style";
 import * as uuid from "uuid";
+import Swal from "sweetalert2";
 
 const formReducer = (state, event) => {
   return {
@@ -25,6 +26,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     e.target.reset();
+    saveProduto();
   };
 
   const id = "ID";
@@ -34,6 +36,11 @@ function App() {
     formData[id] = rngId;
     produtosSavedDB.push(formData);
     localStorage.setItem("Produtos", JSON.stringify(produtosSavedDB));
+    Swal.fire({
+      icon: "success",
+      title: "Cadastrado com sucesso!",
+      showConfirmButton: false,
+    });
   }
 
   return (
@@ -43,6 +50,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="nome">Nome: </label>
           <S.FormInput
+            required
             id="nome"
             type="text"
             name="nome"
@@ -52,6 +60,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="descricao">Descrição: </label>
           <S.FormTextArea
+            required
             id="descricao"
             type="text"
             name="descricao"
@@ -63,6 +72,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="preco">Preço: </label>
           <S.FormInput
+            required
             id="preco"
             type="text"
             name="preco"
@@ -72,17 +82,18 @@ function App() {
         <S.FormChild>
           <label htmlFor="quantidade">Quantidade: </label>
           <S.FormInput
+            required
             id="quantidade"
             type="number"
             name="quantidade"
             onChange={handleChange}
           />
         </S.FormChild>
-        <S.Button onClick={saveProduto}>Cadastrar</S.Button>
+        <S.Button type="submit">Cadastrar</S.Button>
       </S.Form>
       <S.NavBox>
-      <S.Nav to={{ pathname: "/" }}>Voltar</S.Nav>
-      <S.Nav to={{ pathname: "/Estoque" }}>Checar estoque</S.Nav>
+        <S.Nav to={{ pathname: "/" }}>Voltar</S.Nav>
+        <S.Nav to={{ pathname: "/Estoque" }}>Checar estoque</S.Nav>
       </S.NavBox>
     </S.ContainerExterno>
   );

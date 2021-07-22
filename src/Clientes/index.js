@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import * as S from "./style";
 import * as uuid from "uuid";
+import Swal from "sweetalert2";
 
 const formReducer = (state, event) => {
   return {
@@ -25,6 +26,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     e.target.reset();
+    saveCliente();
   };
 
   const id = "ID";
@@ -34,6 +36,11 @@ function App() {
     formData[id] = rngId;
     clientesSavedDB.push(formData);
     localStorage.setItem("Clientes", JSON.stringify(clientesSavedDB));
+    Swal.fire({
+      icon: "success",
+      title: "Cadastrado com sucesso!",
+      showConfirmButton: false,
+    });
   }
 
   return (
@@ -43,6 +50,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="nome">Nome: </label>
           <S.FormInput
+            required
             id="nome"
             type="text"
             name="nome"
@@ -52,6 +60,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="sobrenome">Sobrenome :</label>
           <S.FormInput
+            required
             id="sobrenome"
             type="text"
             name="sobrenome"
@@ -61,6 +70,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="endereco">Endereço: </label>
           <S.FormInput
+            required
             id="endereco"
             type="text"
             name="endereco"
@@ -70,6 +80,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="cidade">Cidade: </label>
           <S.FormInput
+            required
             id="cidade"
             type="text"
             name="cidade"
@@ -79,6 +90,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="estado">Estado: </label>
           <S.FormInput
+            required
             id="estado"
             type="text"
             name="estado"
@@ -88,6 +100,7 @@ function App() {
         <S.FormChild>
           <label htmlFor="cep">CEP: </label>
           <S.FormInput
+            required
             id="cep"
             type="tel"
             pattern="[0-9]{5}-[0-9]{3}"
@@ -96,11 +109,11 @@ function App() {
             onChange={handleChange}
           />
         </S.FormChild>
-        <S.Button onClick={saveCliente}>Cadastrar</S.Button>
+        <S.Button type="submit">Cadastrar</S.Button>
       </S.Form>
       <S.NavBox>
-      <S.Nav to={{ pathname: "/" }}>Voltar</S.Nav>
-      <S.Nav to={{ pathname: "/ClientesDB" }}>Clientes cadastrados</S.Nav>
+        <S.Nav to={{ pathname: "/" }}>Voltar</S.Nav>
+        <S.Nav to={{ pathname: "/ClientesDB" }}>Clientes cadastrados</S.Nav>
       </S.NavBox>
     </S.ContainerExterno>
   );
