@@ -54,6 +54,7 @@ function App() {
             id="nome"
             type="text"
             name="nome"
+            placeholder="NOME DO PRODUTO"
             onChange={handleChange}
           />
         </S.FormChild>
@@ -66,6 +67,7 @@ function App() {
             name="descricao"
             maxLength="150"
             rows="3"
+            placeholder="DESCRIÇÃO DO SEU PRODUTO..."
             onChange={handleChange}
           />
         </S.FormChild>
@@ -76,6 +78,7 @@ function App() {
             id="preco"
             type="text"
             name="preco"
+            placeholder="PREÇO"
             onChange={handleChange}
           />
         </S.FormChild>
@@ -86,6 +89,7 @@ function App() {
             id="quantidade"
             type="number"
             name="quantidade"
+            placeholder="QUANTIDADE"
             onChange={handleChange}
           />
         </S.FormChild>

@@ -54,6 +54,7 @@ function App() {
             id="nome"
             type="text"
             name="nome"
+            placeholder="NOME"
             onChange={handleChange}
           />
         </S.FormChild>
@@ -64,6 +65,7 @@ function App() {
             id="sobrenome"
             type="text"
             name="sobrenome"
+            placeholder="SOBRENOME"
             onChange={handleChange}
           />
         </S.FormChild>
@@ -74,6 +76,7 @@ function App() {
             id="endereco"
             type="text"
             name="endereco"
+            placeholder="ENDEREÇO"
             onChange={handleChange}
           />
         </S.FormChild>
@@ -84,6 +87,7 @@ function App() {
             id="cidade"
             type="text"
             name="cidade"
+            placeholder="CIDADE"
             onChange={handleChange}
           />
         </S.FormChild>
@@ -94,6 +98,7 @@ function App() {
             id="estado"
             type="text"
             name="estado"
+            placeholder="ESTADO"
             onChange={handleChange}
           />
         </S.FormChild>
